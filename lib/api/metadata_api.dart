@@ -9,23 +9,23 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:built_value/serializer.dart';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:ory_oathkeeper_client/model/generic_error.dart';
-import 'package:ory_oathkeeper_client/model/json_web_key_set.dart';
-import 'package:ory_oathkeeper_client/model/rule.dart';
+import 'package:ory_oathkeeper_client/model/inline_response200.dart';
+import 'package:ory_oathkeeper_client/model/inline_response2001.dart';
+import 'package:ory_oathkeeper_client/model/inline_response503.dart';
 
-class ApiApi {
+class MetadataApi {
 
   final Dio _dio;
 
   final Serializers _serializers;
 
-  const ApiApi(this._dio, this._serializers);
+  const MetadataApi(this._dio, this._serializers);
 
-  /// Access Control Decision API
+  /// Return Running Software Version.
   ///
-  /// > This endpoint works with all HTTP Methods (GET, POST, PUT, ...) and matches every path prefixed with /decision.  This endpoint mirrors the proxy capability of ORY Oathkeeper's proxy functionality but instead of forwarding the request to the upstream server, returns 200 (request should be allowed), 401 (unauthorized), or 403 (forbidden) status codes. This endpoint can be used to integrate with other API Proxies like Ambassador, Kong, Envoy, and many more.
-  Future<Response<void>> decisions({ 
+  /// This endpoint returns the version of Ory Oathkeeper.  If the service supports TLS Edge Termination, this endpoint does not require the `X-Forwarded-Proto` header to be set.  Be aware that if you are running multiple nodes of this service, the version will never refer to the cluster state, only to a single instance.
+  Future<Response<InlineResponse2001>> getVersion({ 
     CancelToken cancelToken,
     Map<String, dynamic> headers,
     Map<String, dynamic> extra,
@@ -34,7 +34,7 @@ class ApiApi {
     ProgressCallback onReceiveProgress,
   }) async {
     final _request = RequestOptions(
-      path: r'/decisions',
+      path: r'/version',
       method: 'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -58,53 +58,13 @@ class ApiApi {
       options: _request,
     );
 
-    return _response;
-  }
-
-  /// Retrieve a Rule
-  ///
-  /// Use this method to retrieve a rule from the storage. If it does not exist you will receive a 404 error.
-  Future<Response<Rule>> getRule(
-    String id, { 
-    CancelToken cancelToken,
-    Map<String, dynamic> headers,
-    Map<String, dynamic> extra,
-    ValidateStatus validateStatus,
-    ProgressCallback onSendProgress,
-    ProgressCallback onReceiveProgress,
-  }) async {
-    final _request = RequestOptions(
-      path: r'/rules/{id}'.replaceAll('{' r'id' '}', id.toString()),
-      method: 'GET',
-      headers: <String, dynamic>{
-        ...?headers,
-      },
-      extra: <String, dynamic>{
-        'secure': <Map<String, String>>[],
-        ...?extra,
-      },
-      validateStatus: validateStatus,
-      contentType: 'application/json',
-      cancelToken: cancelToken,
-      onSendProgress: onSendProgress,
-      onReceiveProgress: onReceiveProgress,
-    );
-
-    dynamic _bodyData;
-
-    final _response = await _dio.request<dynamic>(
-      _request.path,
-      data: _bodyData,
-      options: _request,
-    );
-
-    const _responseType = FullType(Rule);
+    const _responseType = FullType(InlineResponse2001);
     final _responseData = _serializers.deserialize(
       _response.data,
       specifiedType: _responseType,
-    ) as Rule;
+    ) as InlineResponse2001;
 
-    return Response<Rule>(
+    return Response<InlineResponse2001>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -116,10 +76,10 @@ class ApiApi {
     );
   }
 
-  /// Lists Cryptographic Keys
+  /// Check HTTP Server Status
   ///
-  /// This endpoint returns cryptographic keys that are required to, for example, verify signatures of ID Tokens.
-  Future<Response<JsonWebKeySet>> getWellKnownJSONWebKeys({ 
+  /// This endpoint returns a HTTP 200 status code when Ory Oathkeeper is accepting incoming HTTP requests. This status does currently not include checks whether the database connection is working.  If the service supports TLS Edge Termination, this endpoint does not require the `X-Forwarded-Proto` header to be set.  Be aware that if you are running multiple nodes of this service, the health status will never refer to the cluster state, only to a single instance.
+  Future<Response<InlineResponse200>> isAlive({ 
     CancelToken cancelToken,
     Map<String, dynamic> headers,
     Map<String, dynamic> extra,
@@ -128,7 +88,7 @@ class ApiApi {
     ProgressCallback onReceiveProgress,
   }) async {
     final _request = RequestOptions(
-      path: r'/.well-known/jwks.json',
+      path: r'/health/alive',
       method: 'GET',
       headers: <String, dynamic>{
         ...?headers,
@@ -152,13 +112,13 @@ class ApiApi {
       options: _request,
     );
 
-    const _responseType = FullType(JsonWebKeySet);
+    const _responseType = FullType(InlineResponse200);
     final _responseData = _serializers.deserialize(
       _response.data,
       specifiedType: _responseType,
-    ) as JsonWebKeySet;
+    ) as InlineResponse200;
 
-    return Response<JsonWebKeySet>(
+    return Response<InlineResponse200>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
@@ -170,12 +130,10 @@ class ApiApi {
     );
   }
 
-  /// List All Rules
+  /// Check HTTP Server and Database Status
   ///
-  /// This method returns an array of all rules that are stored in the backend. This is useful if you want to get a full view of what rules you have currently in place.
-  Future<Response<BuiltList<Rule>>> listRules({ 
-    int limit,
-    int offset,
+  /// This endpoint returns a HTTP 200 status code when Ory Oathkeeper is up running and the environment dependencies (e.g. the database) are responsive as well.  If the service supports TLS Edge Termination, this endpoint does not require the `X-Forwarded-Proto` header to be set.  Be aware that if you are running multiple nodes of Ory Oathkeeper, the health status will never refer to the cluster state, only to a single instance.
+  Future<Response<InlineResponse200>> isReady({ 
     CancelToken cancelToken,
     Map<String, dynamic> headers,
     Map<String, dynamic> extra,
@@ -184,14 +142,10 @@ class ApiApi {
     ProgressCallback onReceiveProgress,
   }) async {
     final _request = RequestOptions(
-      path: r'/rules',
+      path: r'/health/ready',
       method: 'GET',
       headers: <String, dynamic>{
         ...?headers,
-      },
-      queryParameters: <String, dynamic>{
-        if (limit != null) r'limit': limit,
-        if (offset != null) r'offset': offset,
       },
       extra: <String, dynamic>{
         'secure': <Map<String, String>>[],
@@ -212,13 +166,13 @@ class ApiApi {
       options: _request,
     );
 
-    const _responseType = FullType(BuiltList, [FullType(Rule)]);
-    final BuiltList<Rule> _responseData = _serializers.deserialize(
+    const _responseType = FullType(InlineResponse200);
+    final _responseData = _serializers.deserialize(
       _response.data,
       specifiedType: _responseType,
-    ) as BuiltList<Rule>;
+    ) as InlineResponse200;
 
-    return Response<BuiltList<Rule>>(
+    return Response<InlineResponse200>(
       data: _responseData,
       headers: _response.headers,
       isRedirect: _response.isRedirect,
