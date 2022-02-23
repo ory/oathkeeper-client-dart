@@ -10,59 +10,53 @@ import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'generic_error.g.dart';
+part 'inline_response500.g.dart';
 
-abstract class GenericError implements Built<GenericError, GenericErrorBuilder> {
+abstract class InlineResponse500 implements Built<InlineResponse500, InlineResponse500Builder> {
 
-    /// code
     @nullable
     @BuiltValueField(wireName: r'code')
     int get code;
 
-    /// details
     @nullable
     @BuiltValueField(wireName: r'details')
-    BuiltList<BuiltMap<String, JsonObject>> get details;
+    BuiltList<JsonObject> get details;
 
-    /// message
     @nullable
     @BuiltValueField(wireName: r'message')
     String get message;
 
-    /// reason
     @nullable
     @BuiltValueField(wireName: r'reason')
     String get reason;
 
-    /// request
     @nullable
     @BuiltValueField(wireName: r'request')
     String get request;
 
-    /// status
     @nullable
     @BuiltValueField(wireName: r'status')
     String get status;
 
-    GenericError._();
+    InlineResponse500._();
 
-    static void _initializeBuilder(GenericErrorBuilder b) => b;
+    static void _initializeBuilder(InlineResponse500Builder b) => b;
 
-    factory GenericError([void updates(GenericErrorBuilder b)]) = _$GenericError;
+    factory InlineResponse500([void updates(InlineResponse500Builder b)]) = _$InlineResponse500;
 
     @BuiltValueSerializer(custom: true)
-    static Serializer<GenericError> get serializer => _$GenericErrorSerializer();
+    static Serializer<InlineResponse500> get serializer => _$InlineResponse500Serializer();
 }
 
-class _$GenericErrorSerializer implements StructuredSerializer<GenericError> {
+class _$InlineResponse500Serializer implements StructuredSerializer<InlineResponse500> {
 
     @override
-    final Iterable<Type> types = const [GenericError, _$GenericError];
+    final Iterable<Type> types = const [InlineResponse500, _$InlineResponse500];
     @override
-    final String wireName = r'GenericError';
+    final String wireName = r'InlineResponse500';
 
     @override
-    Iterable<Object> serialize(Serializers serializers, GenericError object,
+    Iterable<Object> serialize(Serializers serializers, InlineResponse500 object,
         {FullType specifiedType = FullType.unspecified}) {
         final result = <Object>[];
         if (object.code != null) {
@@ -75,7 +69,7 @@ class _$GenericErrorSerializer implements StructuredSerializer<GenericError> {
             result
                 ..add(r'details')
                 ..add(serializers.serialize(object.details,
-                    specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType(JsonObject)])])));
+                    specifiedType: const FullType(BuiltList, [FullType(JsonObject)])));
         }
         if (object.message != null) {
             result
@@ -105,9 +99,9 @@ class _$GenericErrorSerializer implements StructuredSerializer<GenericError> {
     }
 
     @override
-    GenericError deserialize(Serializers serializers, Iterable<Object> serialized,
+    InlineResponse500 deserialize(Serializers serializers, Iterable<Object> serialized,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = GenericErrorBuilder();
+        final result = InlineResponse500Builder();
 
         final iterator = serialized.iterator;
         while (iterator.moveNext()) {
@@ -121,7 +115,7 @@ class _$GenericErrorSerializer implements StructuredSerializer<GenericError> {
                     break;
                 case r'details':
                     result.details.replace(serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(BuiltMap, [FullType(String), FullType(JsonObject)])])) as BuiltList<BuiltMap<String, JsonObject>>);
+                        specifiedType: const FullType(BuiltList, [FullType(JsonObject)])) as BuiltList<JsonObject>);
                     break;
                 case r'message':
                     result.message = serializers.deserialize(value,

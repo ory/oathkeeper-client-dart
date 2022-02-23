@@ -5,46 +5,40 @@
 
 // ignore_for_file: unused_import
 
-import 'package:ory_oathkeeper_client/model/generic_error.dart';
+import 'package:ory_oathkeeper_client/model/inline_response500.dart';
 import 'package:test/test.dart';
 
-// tests for GenericError
+// tests for InlineResponse500
 void main() {
-  final instance = GenericErrorBuilder();
+  final instance = InlineResponse500Builder();
   // TODO add properties to the builder and call build()
 
-  group(GenericError, () {
-    // code
+  group(InlineResponse500, () {
     // int code
     test('to test the property `code`', () async {
       // TODO
     });
 
-    // details
-    // BuiltList<BuiltMap<String, JsonObject>> details
+    // BuiltList<JsonObject> details
     test('to test the property `details`', () async {
       // TODO
     });
 
-    // message
     // String message
     test('to test the property `message`', () async {
       // TODO
     });
 
-    // reason
     // String reason
     test('to test the property `reason`', () async {
       // TODO
     });
 
-    // request
     // String request
     test('to test the property `request`', () async {
       // TODO
     });
 
-    // status
     // String status
     test('to test the property `status`', () async {
       // TODO
