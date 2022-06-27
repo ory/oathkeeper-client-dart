@@ -1,64 +1,64 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.7
-
-// ignore_for_file: unused_import
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
-part 'inline_response500.g.dart';
+part 'get_well_known_json_web_keys500_response.g.dart';
 
-abstract class InlineResponse500 implements Built<InlineResponse500, InlineResponse500Builder> {
-
-    @nullable
+/// GetWellKnownJSONWebKeys500Response
+///
+/// Properties:
+/// * [code] 
+/// * [details] 
+/// * [message] 
+/// * [reason] 
+/// * [request] 
+/// * [status] 
+abstract class GetWellKnownJSONWebKeys500Response implements Built<GetWellKnownJSONWebKeys500Response, GetWellKnownJSONWebKeys500ResponseBuilder> {
     @BuiltValueField(wireName: r'code')
-    int get code;
+    int? get code;
 
-    @nullable
     @BuiltValueField(wireName: r'details')
-    BuiltList<JsonObject> get details;
+    BuiltList<JsonObject>? get details;
 
-    @nullable
     @BuiltValueField(wireName: r'message')
-    String get message;
+    String? get message;
 
-    @nullable
     @BuiltValueField(wireName: r'reason')
-    String get reason;
+    String? get reason;
 
-    @nullable
     @BuiltValueField(wireName: r'request')
-    String get request;
+    String? get request;
 
-    @nullable
     @BuiltValueField(wireName: r'status')
-    String get status;
+    String? get status;
 
-    InlineResponse500._();
+    GetWellKnownJSONWebKeys500Response._();
 
-    static void _initializeBuilder(InlineResponse500Builder b) => b;
+    @BuiltValueHook(initializeBuilder: true)
+    static void _defaults(GetWellKnownJSONWebKeys500ResponseBuilder b) => b;
 
-    factory InlineResponse500([void updates(InlineResponse500Builder b)]) = _$InlineResponse500;
+    factory GetWellKnownJSONWebKeys500Response([void updates(GetWellKnownJSONWebKeys500ResponseBuilder b)]) = _$GetWellKnownJSONWebKeys500Response;
 
     @BuiltValueSerializer(custom: true)
-    static Serializer<InlineResponse500> get serializer => _$InlineResponse500Serializer();
+    static Serializer<GetWellKnownJSONWebKeys500Response> get serializer => _$GetWellKnownJSONWebKeys500ResponseSerializer();
 }
 
-class _$InlineResponse500Serializer implements StructuredSerializer<InlineResponse500> {
+class _$GetWellKnownJSONWebKeys500ResponseSerializer implements StructuredSerializer<GetWellKnownJSONWebKeys500Response> {
+    @override
+    final Iterable<Type> types = const [GetWellKnownJSONWebKeys500Response, _$GetWellKnownJSONWebKeys500Response];
 
     @override
-    final Iterable<Type> types = const [InlineResponse500, _$InlineResponse500];
-    @override
-    final String wireName = r'InlineResponse500';
+    final String wireName = r'GetWellKnownJSONWebKeys500Response';
 
     @override
-    Iterable<Object> serialize(Serializers serializers, InlineResponse500 object,
+    Iterable<Object?> serialize(Serializers serializers, GetWellKnownJSONWebKeys500Response object,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = <Object>[];
+        final result = <Object?>[];
         if (object.code != null) {
             result
                 ..add(r'code')
@@ -99,39 +99,46 @@ class _$InlineResponse500Serializer implements StructuredSerializer<InlineRespon
     }
 
     @override
-    InlineResponse500 deserialize(Serializers serializers, Iterable<Object> serialized,
+    GetWellKnownJSONWebKeys500Response deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = InlineResponse500Builder();
+        final result = GetWellKnownJSONWebKeys500ResponseBuilder();
 
         final iterator = serialized.iterator;
         while (iterator.moveNext()) {
             final key = iterator.current as String;
             iterator.moveNext();
-            final dynamic value = iterator.current;
+            final Object? value = iterator.current;
+            
             switch (key) {
                 case r'code':
-                    result.code = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(int)) as int;
+                    result.code = valueDes;
                     break;
                 case r'details':
-                    result.details.replace(serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(JsonObject)])) as BuiltList<JsonObject>);
+                    final valueDes = serializers.deserialize(value,
+                        specifiedType: const FullType(BuiltList, [FullType(JsonObject)])) as BuiltList<JsonObject>;
+                    result.details.replace(valueDes);
                     break;
                 case r'message':
-                    result.message = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.message = valueDes;
                     break;
                 case r'reason':
-                    result.reason = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.reason = valueDes;
                     break;
                 case r'request':
-                    result.request = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.request = valueDes;
                     break;
                 case r'status':
-                    result.status = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.status = valueDes;
                     break;
             }
         }

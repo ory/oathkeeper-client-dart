@@ -1,19 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.7
-
-// ignore_for_file: unused_import
-
-import 'package:ory_oathkeeper_client/model/inline_response500.dart';
 import 'package:test/test.dart';
+import 'package:ory_oathkeeper_client/ory_oathkeeper_client.dart';
 
-// tests for InlineResponse500
+// tests for GetWellKnownJSONWebKeys500Response
 void main() {
-  final instance = InlineResponse500Builder();
+  final instance = GetWellKnownJSONWebKeys500ResponseBuilder();
   // TODO add properties to the builder and call build()
 
-  group(InlineResponse500, () {
+  group(GetWellKnownJSONWebKeys500Response, () {
     // int code
     test('to test the property `code`', () async {
       // TODO
@@ -44,7 +37,5 @@ void main() {
       // TODO
     });
 
-
   });
-
 }

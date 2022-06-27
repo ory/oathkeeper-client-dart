@@ -1,4 +1,4 @@
-# ory_oathkeeper_client.model.InlineResponse500
+# ory_oathkeeper_client.model.GetWellKnownJSONWebKeys500Response
 
 ## Load the model package
 ```dart
@@ -9,7 +9,7 @@ import 'package:ory_oathkeeper_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** |  | [optional] 
-**details** | [**BuiltList<JsonObject>**](JsonObject.md) |  | [optional] 
+**details** | [**BuiltList&lt;JsonObject&gt;**](JsonObject.md) |  | [optional] 
 **message** | **String** |  | [optional] 
 **reason** | **String** |  | [optional] 
 **request** | **String** |  | [optional] 

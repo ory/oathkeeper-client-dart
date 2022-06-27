@@ -1,9 +1,6 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.7
-
-// ignore_for_file: unused_import
 
 import 'package:built_value/json_object.dart';
 import 'package:built_value/built_value.dart';
@@ -11,21 +8,24 @@ import 'package:built_value/serializer.dart';
 
 part 'rule_handler.g.dart';
 
+/// RuleHandler
+///
+/// Properties:
+/// * [config] - Config contains the configuration for the handler. Please read the user guide for a complete list of each handler's available settings.
+/// * [handler] - Handler identifies the implementation which will be used to handle this specific request. Please read the user guide for a complete list of available handlers.
 abstract class RuleHandler implements Built<RuleHandler, RuleHandlerBuilder> {
-
     /// Config contains the configuration for the handler. Please read the user guide for a complete list of each handler's available settings.
-    @nullable
     @BuiltValueField(wireName: r'config')
-    JsonObject get config;
+    JsonObject? get config;
 
     /// Handler identifies the implementation which will be used to handle this specific request. Please read the user guide for a complete list of available handlers.
-    @nullable
     @BuiltValueField(wireName: r'handler')
-    String get handler;
+    String? get handler;
 
     RuleHandler._();
 
-    static void _initializeBuilder(RuleHandlerBuilder b) => b;
+    @BuiltValueHook(initializeBuilder: true)
+    static void _defaults(RuleHandlerBuilder b) => b;
 
     factory RuleHandler([void updates(RuleHandlerBuilder b)]) = _$RuleHandler;
 
@@ -34,16 +34,16 @@ abstract class RuleHandler implements Built<RuleHandler, RuleHandlerBuilder> {
 }
 
 class _$RuleHandlerSerializer implements StructuredSerializer<RuleHandler> {
-
     @override
     final Iterable<Type> types = const [RuleHandler, _$RuleHandler];
+
     @override
     final String wireName = r'RuleHandler';
 
     @override
-    Iterable<Object> serialize(Serializers serializers, RuleHandler object,
+    Iterable<Object?> serialize(Serializers serializers, RuleHandler object,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = <Object>[];
+        final result = <Object?>[];
         if (object.config != null) {
             result
                 ..add(r'config')
@@ -60,7 +60,7 @@ class _$RuleHandlerSerializer implements StructuredSerializer<RuleHandler> {
     }
 
     @override
-    RuleHandler deserialize(Serializers serializers, Iterable<Object> serialized,
+    RuleHandler deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
         final result = RuleHandlerBuilder();
 
@@ -68,15 +68,18 @@ class _$RuleHandlerSerializer implements StructuredSerializer<RuleHandler> {
         while (iterator.moveNext()) {
             final key = iterator.current as String;
             iterator.moveNext();
-            final dynamic value = iterator.current;
+            final Object? value = iterator.current;
+            
             switch (key) {
                 case r'config':
-                    result.config = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(JsonObject)) as JsonObject;
+                    result.config = valueDes;
                     break;
                 case r'handler':
-                    result.handler = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.handler = valueDes;
                     break;
             }
         }

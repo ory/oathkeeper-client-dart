@@ -1,9 +1,6 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.7
-
-// ignore_for_file: unused_import
 
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
@@ -11,84 +8,87 @@ import 'package:built_value/serializer.dart';
 
 part 'json_web_key.g.dart';
 
+/// JsonWebKey
+///
+/// Properties:
+/// * [alg] - The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key.  The values used should either be registered in the IANA \"JSON Web Signature and Encryption Algorithms\" registry established by [JWA] or be a value that contains a Collision- Resistant Name.
+/// * [crv] 
+/// * [d] 
+/// * [dp] 
+/// * [dq] 
+/// * [e] 
+/// * [k] 
+/// * [kid] - The \"kid\" (key ID) parameter is used to match a specific key.  This is used, for instance, to choose among a set of keys within a JWK Set during key rollover.  The structure of the \"kid\" value is unspecified.  When \"kid\" values are used within a JWK Set, different keys within the JWK Set SHOULD use distinct \"kid\" values.  (One example in which different keys might use the same \"kid\" value is if they have different \"kty\" (key type) values but are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string.
+/// * [kty] - The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be registered in the IANA \"JSON Web Key Types\" registry established by [JWA] or be a value that contains a Collision- Resistant Name.  The \"kty\" value is a case-sensitive string.
+/// * [n] 
+/// * [p] 
+/// * [q] 
+/// * [qi] 
+/// * [use] - The \"use\" (public key use) parameter identifies the intended use of the public key. The \"use\" parameter is employed to indicate whether a public key is used for encrypting data or verifying the signature on data. Values are commonly \"sig\" (signature) or \"enc\" (encryption).
+/// * [x] 
+/// * [x5c] - The \"x5c\" (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates [RFC5280].  The certificate chain is represented as a JSON array of certificate value strings.  Each string in the array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the key value MUST be the first certificate.
+/// * [y] 
 abstract class JsonWebKey implements Built<JsonWebKey, JsonWebKeyBuilder> {
-
     /// The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key.  The values used should either be registered in the IANA \"JSON Web Signature and Encryption Algorithms\" registry established by [JWA] or be a value that contains a Collision- Resistant Name.
-    @nullable
     @BuiltValueField(wireName: r'alg')
-    String get alg;
+    String? get alg;
 
-    @nullable
     @BuiltValueField(wireName: r'crv')
-    String get crv;
+    String? get crv;
 
-    @nullable
     @BuiltValueField(wireName: r'd')
-    String get d;
+    String? get d;
 
-    @nullable
     @BuiltValueField(wireName: r'dp')
-    String get dp;
+    String? get dp;
 
-    @nullable
     @BuiltValueField(wireName: r'dq')
-    String get dq;
+    String? get dq;
 
-    @nullable
     @BuiltValueField(wireName: r'e')
-    String get e;
+    String? get e;
 
-    @nullable
     @BuiltValueField(wireName: r'k')
-    String get k;
+    String? get k;
 
     /// The \"kid\" (key ID) parameter is used to match a specific key.  This is used, for instance, to choose among a set of keys within a JWK Set during key rollover.  The structure of the \"kid\" value is unspecified.  When \"kid\" values are used within a JWK Set, different keys within the JWK Set SHOULD use distinct \"kid\" values.  (One example in which different keys might use the same \"kid\" value is if they have different \"kty\" (key type) values but are considered to be equivalent alternatives by the application using them.)  The \"kid\" value is a case-sensitive string.
-    @nullable
     @BuiltValueField(wireName: r'kid')
-    String get kid;
+    String? get kid;
 
     /// The \"kty\" (key type) parameter identifies the cryptographic algorithm family used with the key, such as \"RSA\" or \"EC\". \"kty\" values should either be registered in the IANA \"JSON Web Key Types\" registry established by [JWA] or be a value that contains a Collision- Resistant Name.  The \"kty\" value is a case-sensitive string.
-    @nullable
     @BuiltValueField(wireName: r'kty')
-    String get kty;
+    String? get kty;
 
-    @nullable
     @BuiltValueField(wireName: r'n')
-    String get n;
+    String? get n;
 
-    @nullable
     @BuiltValueField(wireName: r'p')
-    String get p;
+    String? get p;
 
-    @nullable
     @BuiltValueField(wireName: r'q')
-    String get q;
+    String? get q;
 
-    @nullable
     @BuiltValueField(wireName: r'qi')
-    String get qi;
+    String? get qi;
 
     /// The \"use\" (public key use) parameter identifies the intended use of the public key. The \"use\" parameter is employed to indicate whether a public key is used for encrypting data or verifying the signature on data. Values are commonly \"sig\" (signature) or \"enc\" (encryption).
-    @nullable
     @BuiltValueField(wireName: r'use')
-    String get use;
+    String? get use;
 
-    @nullable
     @BuiltValueField(wireName: r'x')
-    String get x;
+    String? get x;
 
     /// The \"x5c\" (X.509 certificate chain) parameter contains a chain of one or more PKIX certificates [RFC5280].  The certificate chain is represented as a JSON array of certificate value strings.  Each string in the array is a base64-encoded (Section 4 of [RFC4648] -- not base64url-encoded) DER [ITU.X690.1994] PKIX certificate value. The PKIX certificate containing the key value MUST be the first certificate.
-    @nullable
     @BuiltValueField(wireName: r'x5c')
-    BuiltList<String> get x5c;
+    BuiltList<String>? get x5c;
 
-    @nullable
     @BuiltValueField(wireName: r'y')
-    String get y;
+    String? get y;
 
     JsonWebKey._();
 
-    static void _initializeBuilder(JsonWebKeyBuilder b) => b;
+    @BuiltValueHook(initializeBuilder: true)
+    static void _defaults(JsonWebKeyBuilder b) => b;
 
     factory JsonWebKey([void updates(JsonWebKeyBuilder b)]) = _$JsonWebKey;
 
@@ -97,16 +97,16 @@ abstract class JsonWebKey implements Built<JsonWebKey, JsonWebKeyBuilder> {
 }
 
 class _$JsonWebKeySerializer implements StructuredSerializer<JsonWebKey> {
-
     @override
     final Iterable<Type> types = const [JsonWebKey, _$JsonWebKey];
+
     @override
     final String wireName = r'JsonWebKey';
 
     @override
-    Iterable<Object> serialize(Serializers serializers, JsonWebKey object,
+    Iterable<Object?> serialize(Serializers serializers, JsonWebKey object,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = <Object>[];
+        final result = <Object?>[];
         if (object.alg != null) {
             result
                 ..add(r'alg')
@@ -213,7 +213,7 @@ class _$JsonWebKeySerializer implements StructuredSerializer<JsonWebKey> {
     }
 
     @override
-    JsonWebKey deserialize(Serializers serializers, Iterable<Object> serialized,
+    JsonWebKey deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
         final result = JsonWebKeyBuilder();
 
@@ -221,75 +221,93 @@ class _$JsonWebKeySerializer implements StructuredSerializer<JsonWebKey> {
         while (iterator.moveNext()) {
             final key = iterator.current as String;
             iterator.moveNext();
-            final dynamic value = iterator.current;
+            final Object? value = iterator.current;
+            
             switch (key) {
                 case r'alg':
-                    result.alg = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.alg = valueDes;
                     break;
                 case r'crv':
-                    result.crv = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.crv = valueDes;
                     break;
                 case r'd':
-                    result.d = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.d = valueDes;
                     break;
                 case r'dp':
-                    result.dp = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.dp = valueDes;
                     break;
                 case r'dq':
-                    result.dq = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.dq = valueDes;
                     break;
                 case r'e':
-                    result.e = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.e = valueDes;
                     break;
                 case r'k':
-                    result.k = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.k = valueDes;
                     break;
                 case r'kid':
-                    result.kid = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.kid = valueDes;
                     break;
                 case r'kty':
-                    result.kty = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.kty = valueDes;
                     break;
                 case r'n':
-                    result.n = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.n = valueDes;
                     break;
                 case r'p':
-                    result.p = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.p = valueDes;
                     break;
                 case r'q':
-                    result.q = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.q = valueDes;
                     break;
                 case r'qi':
-                    result.qi = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.qi = valueDes;
                     break;
                 case r'use':
-                    result.use = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.use = valueDes;
                     break;
                 case r'x':
-                    result.x = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.x = valueDes;
                     break;
                 case r'x5c':
-                    result.x5c.replace(serializers.deserialize(value,
-                        specifiedType: const FullType(BuiltList, [FullType(String)])) as BuiltList<String>);
+                    final valueDes = serializers.deserialize(value,
+                        specifiedType: const FullType(BuiltList, [FullType(String)])) as BuiltList<String>;
+                    result.x5c.replace(valueDes);
                     break;
                 case r'y':
-                    result.y = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.y = valueDes;
                     break;
             }
         }

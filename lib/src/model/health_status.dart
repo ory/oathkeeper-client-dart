@@ -1,25 +1,25 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.7
-
-// ignore_for_file: unused_import
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'health_status.g.dart';
 
+/// HealthStatus
+///
+/// Properties:
+/// * [status] - Status always contains \"ok\".
 abstract class HealthStatus implements Built<HealthStatus, HealthStatusBuilder> {
-
     /// Status always contains \"ok\".
-    @nullable
     @BuiltValueField(wireName: r'status')
-    String get status;
+    String? get status;
 
     HealthStatus._();
 
-    static void _initializeBuilder(HealthStatusBuilder b) => b;
+    @BuiltValueHook(initializeBuilder: true)
+    static void _defaults(HealthStatusBuilder b) => b;
 
     factory HealthStatus([void updates(HealthStatusBuilder b)]) = _$HealthStatus;
 
@@ -28,16 +28,16 @@ abstract class HealthStatus implements Built<HealthStatus, HealthStatusBuilder> 
 }
 
 class _$HealthStatusSerializer implements StructuredSerializer<HealthStatus> {
-
     @override
     final Iterable<Type> types = const [HealthStatus, _$HealthStatus];
+
     @override
     final String wireName = r'HealthStatus';
 
     @override
-    Iterable<Object> serialize(Serializers serializers, HealthStatus object,
+    Iterable<Object?> serialize(Serializers serializers, HealthStatus object,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = <Object>[];
+        final result = <Object?>[];
         if (object.status != null) {
             result
                 ..add(r'status')
@@ -48,7 +48,7 @@ class _$HealthStatusSerializer implements StructuredSerializer<HealthStatus> {
     }
 
     @override
-    HealthStatus deserialize(Serializers serializers, Iterable<Object> serialized,
+    HealthStatus deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
         final result = HealthStatusBuilder();
 
@@ -56,11 +56,13 @@ class _$HealthStatusSerializer implements StructuredSerializer<HealthStatus> {
         while (iterator.moveNext()) {
             final key = iterator.current as String;
             iterator.moveNext();
-            final dynamic value = iterator.current;
+            final Object? value = iterator.current;
+            
             switch (key) {
                 case r'status':
-                    result.status = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.status = valueDes;
                     break;
             }
         }

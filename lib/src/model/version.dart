@@ -1,25 +1,25 @@
 //
 // AUTO-GENERATED FILE, DO NOT MODIFY!
 //
-// @dart=2.7
-
-// ignore_for_file: unused_import
 
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
 part 'version.g.dart';
 
+/// Version
+///
+/// Properties:
+/// * [version] - Version is the service's version.
 abstract class Version implements Built<Version, VersionBuilder> {
-
     /// Version is the service's version.
-    @nullable
     @BuiltValueField(wireName: r'version')
-    String get version;
+    String? get version;
 
     Version._();
 
-    static void _initializeBuilder(VersionBuilder b) => b;
+    @BuiltValueHook(initializeBuilder: true)
+    static void _defaults(VersionBuilder b) => b;
 
     factory Version([void updates(VersionBuilder b)]) = _$Version;
 
@@ -28,16 +28,16 @@ abstract class Version implements Built<Version, VersionBuilder> {
 }
 
 class _$VersionSerializer implements StructuredSerializer<Version> {
-
     @override
     final Iterable<Type> types = const [Version, _$Version];
+
     @override
     final String wireName = r'Version';
 
     @override
-    Iterable<Object> serialize(Serializers serializers, Version object,
+    Iterable<Object?> serialize(Serializers serializers, Version object,
         {FullType specifiedType = FullType.unspecified}) {
-        final result = <Object>[];
+        final result = <Object?>[];
         if (object.version != null) {
             result
                 ..add(r'version')
@@ -48,7 +48,7 @@ class _$VersionSerializer implements StructuredSerializer<Version> {
     }
 
     @override
-    Version deserialize(Serializers serializers, Iterable<Object> serialized,
+    Version deserialize(Serializers serializers, Iterable<Object?> serialized,
         {FullType specifiedType = FullType.unspecified}) {
         final result = VersionBuilder();
 
@@ -56,11 +56,13 @@ class _$VersionSerializer implements StructuredSerializer<Version> {
         while (iterator.moveNext()) {
             final key = iterator.current as String;
             iterator.moveNext();
-            final dynamic value = iterator.current;
+            final Object? value = iterator.current;
+            
             switch (key) {
                 case r'version':
-                    result.version = serializers.deserialize(value,
+                    final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(String)) as String;
+                    result.version = valueDes;
                     break;
             }
         }
