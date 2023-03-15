@@ -1,4 +1,4 @@
-# ory_oathkeeper_client.model.GetWellKnownJSONWebKeys500Response
+# ory_oathkeeper_client.model.GenericError
 
 ## Load the model package
 ```dart
@@ -9,7 +9,7 @@ import 'package:ory_oathkeeper_client/api.dart';
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **code** | **int** |  | [optional] 
-**details** | [**List<Object>**](Object.md) |  | [optional] [default to const []]
+**details** | [**BuiltList&lt;BuiltMap&lt;String, JsonObject&gt;&gt;**](BuiltMap.md) |  | [optional] 
 **message** | **String** |  | [optional] 
 **reason** | **String** |  | [optional] 
 **request** | **String** |  | [optional] 
