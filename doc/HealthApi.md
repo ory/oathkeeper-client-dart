@@ -29,7 +29,7 @@ final api = OryOathkeeperClient().getHealthApi();
 try {
     final response = api.isInstanceAlive();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling HealthApi->isInstanceAlive: $e\n');
 }
 ```
@@ -68,7 +68,7 @@ final api = OryOathkeeperClient().getHealthApi();
 try {
     final response = api.isInstanceReady();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling HealthApi->isInstanceReady: $e\n');
 }
 ```

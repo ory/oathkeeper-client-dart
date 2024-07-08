@@ -28,7 +28,7 @@ final api = OryOathkeeperClient().getVersionApi();
 try {
     final response = api.getVersion();
     print(response);
-} catch on DioError (e) {
+} catch on DioException (e) {
     print('Exception when calling VersionApi->getVersion: $e\n');
 }
 ```
